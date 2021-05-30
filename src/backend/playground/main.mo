@@ -13,6 +13,6 @@ actor {
         return "Hello there Fernando!";
     };
     public func greet(msg : Text) : async Text {
-        return "Hello, " # msg # "!";
+        return msg;
     };
 };

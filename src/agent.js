@@ -1,11 +1,17 @@
-import { Actor, HttpAgent } from "@dfinity/agent"
-import { idlFactory as counter_idl, canisterId as counter_id } from "dfx-generated/counter"
+import { Actor, HttpAgent } from "@dfinity/agent";
+import {
+  idlFactory as playground_idl,
+  canisterId as playground_id,
+} from "dfx-generated/playground";
 
 const agentOptions = {
   host: "http://localhost:8000",
-}
+};
 
-const agent = new HttpAgent(agentOptions)
-const counter = Actor.createActor(counter_idl, { agent, canisterId: counter_id })
+const agent = new HttpAgent(agentOptions);
+const playground = Actor.createActor(playground_idl, {
+  agent,
+  canisterId: playground_id,
+});
 
-export { counter }
+export { playground };

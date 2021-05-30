@@ -1,12 +1,12 @@
 {
   "canisters": {
-    "counter": {
-      "main": "src/backend/counter/main.mo",
+    "playground": {
+      "main": "src/backend/playground/main.mo",
       "type": "motoko"
     },
     "assets": {
       "dependencies": [
-        "counter"
+        "playground"
       ],
       "frontend": {
         "entrypoint": "dist/index.html"

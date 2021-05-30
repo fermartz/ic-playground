@@ -5,7 +5,7 @@ import logo from "../../assets/logo.svg";
 function HomeLayout({ children }) {
   return (
     <div className="text-center container mx-auto">
-      <header className="space-y-5 min-h-screen flex flex-col items-center justify-center text-lg">
+      <header className="my-20 flex flex-col items-center justify-center text-lg">
         <RouterLink to="/">
           <img
             src={logo}
@@ -14,9 +14,8 @@ function HomeLayout({ children }) {
             alt="logo"
           />
         </RouterLink>
-
-        {children}
       </header>
+      <div className="px-16">{children}</div>
     </div>
   );
 }

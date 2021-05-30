@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
+
+const Items = ["item-one", "item-two", "item-three"];
 
 function HomePageView() {
   return (
-    <div>
-      <p>Home Page view</p>
-      <p>
-        <RouterLink to="/app/item-one">Item one</RouterLink>
-      </p>
-      <p>
-        <RouterLink to="/app/item-two">Item two</RouterLink>
-      </p>
-      <p>
-        <RouterLink to="/app/item-three">Item three</RouterLink>
-      </p>
+    <div className="grid grid-cols-2 gap-16">
+      {Items.map((i, x) => {
+        return (
+          <RouterLink to={`/app/${i}`} key={x}>
+            <div className="py-8 rounded-md text-white text-2xl bg-gradient-to-r from-indigo-600 to-pink-500">
+              {i}
+            </div>
+          </RouterLink>
+        );
+      })}
     </div>
   );
 }
