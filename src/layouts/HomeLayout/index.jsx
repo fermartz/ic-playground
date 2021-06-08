@@ -14,6 +14,9 @@ function HomeLayout({ children }) {
             alt="logo"
           />
         </RouterLink>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl my-5 py-3 font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-pink-500">
+          IC Playground
+        </h1>
       </header>
       <div className="px-16">{children}</div>
     </div>

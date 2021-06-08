@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
 
-const Items = ["item-one", "item-two", "item-three"];
+const Items = ["counter", "greeting", "item-one", "item-two", "item-three"];
 
 function HomePageView() {
   return (
