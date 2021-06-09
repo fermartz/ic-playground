@@ -13,6 +13,11 @@ const AppRoutes = {
     // ----------------------------------------------------------------------
     {
       exact: true,
+      path: PATH_APP.app.calculator,
+      component: lazy(() => import("../views/CalculatorView")),
+    },
+    {
+      exact: true,
       path: PATH_APP.app.counter,
       component: lazy(() => import("../views/CounterView")),
     },
@@ -20,6 +25,11 @@ const AppRoutes = {
       exact: true,
       path: PATH_APP.app.greeting,
       component: lazy(() => import("../views/GreetingView")),
+    },
+    {
+      exact: true,
+      path: PATH_APP.app.helloWorld,
+      component: lazy(() => import("../views/HelloWorldView")),
     },
     {
       exact: true,

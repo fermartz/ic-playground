@@ -10,6 +10,7 @@
   "dependencies": {
     "@dfinity/agent": "0.8.7",
     "@dfinity/authentication": "0.8.7",
+    "@heroicons/react": "^1.0.1",
     "history": "^4.10.1",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",

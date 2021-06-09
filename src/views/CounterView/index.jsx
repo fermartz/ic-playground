@@ -16,7 +16,6 @@ function CounterView() {
   }, []);
 
   const onIncrementClick = useCallback(async () => {
-    setCount("...");
     setInProgress("Calculating...");
     await playground.increment();
     refreshCounter();

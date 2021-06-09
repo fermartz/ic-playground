@@ -20,7 +20,7 @@ function RouteProgress(props) {
   return <Route {...props} />;
 }
 function LoadingScreen() {
-  return <p>Loading LoadingScreen</p>;
+  return <p>Loading Screen</p>;
 }
 export function renderRoutes(routes = []) {
   return (
