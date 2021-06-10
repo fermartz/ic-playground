@@ -59,7 +59,7 @@ function CalculatorView() {
         <p className="text-5xl text-purple-700">{val}</p>
         <div>
           <input
-            className="px-3 py-3 my-8 w-48 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded-full text-sm transition duration-200 focus:shadow-md focus:outline-none ring-offset-2 border border-gray-400 focus:ring-2 focus:ring-purple-300 "
+            className="px-3 py-3 my-8 w-48 placeholder-blueGray-300 text-blueGray-600 relative bg-white rounded text-sm transition duration-200 focus:shadow-md focus:outline-none ring-offset-2 border border-gray-400 focus:ring-2 focus:ring-purple-300 "
             defaultValue={isNaN(inputNum) ? 0 : inputNum}
             onChange={(e) => handleInputNum(e.target.value)}
             placeholder="enter a number"

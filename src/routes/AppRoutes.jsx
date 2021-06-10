@@ -33,6 +33,11 @@ const AppRoutes = {
     },
     {
       exact: true,
+      path: PATH_APP.app.phonebook,
+      component: lazy(() => import("../views/PhonebookView")),
+    },
+    {
+      exact: true,
       path: PATH_APP.app.itemOne,
       component: lazy(() => import("../views/ItemOneView")),
     },

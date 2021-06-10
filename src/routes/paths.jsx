@@ -20,6 +20,7 @@ export const PATH_APP = {
     counter: path(ROOTS.app, "/counter"),
     greeting: path(ROOTS.app, "/greeting"),
     helloWorld: path(ROOTS.app, "/hello-world"),
+    phonebook: path(ROOTS.app, "/phonebook"),
     itemOne: path(ROOTS.app, "/item-one"),
     itemTwo: path(ROOTS.app, "/item-two"),
     itemThree: path(ROOTS.app, "/item-three"),

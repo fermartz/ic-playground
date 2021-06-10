@@ -5,6 +5,7 @@ import {
   HandIcon,
   PlusIcon,
   CalculatorIcon,
+  BookOpenIcon,
 } from "@heroicons/react/solid";
 
 const Items = [
@@ -23,6 +24,10 @@ const Items = [
   {
     page: "calculator",
     icon: <CalculatorIcon className="h-8 w-8 mr-6 text-white" />,
+  },
+  {
+    page: "phonebook",
+    icon: <BookOpenIcon className="h-8 w-8 mr-6 text-white" />,
   },
 ];
 
