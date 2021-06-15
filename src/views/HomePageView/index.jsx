@@ -29,6 +29,10 @@ const Items = [
     page: "phonebook",
     icon: <BookOpenIcon className="h-8 w-8 mr-6 text-white" />,
   },
+  {
+    page: "assistant",
+    icon: <BookOpenIcon className="h-8 w-8 mr-6 text-white" />,
+  },
 ];
 
 function HomePageView() {

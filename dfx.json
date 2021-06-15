@@ -4,6 +4,10 @@
       "main": "src/backend/playground/main.mo",
       "type": "motoko"
     },
+    "assistant": {
+      "main": "src/backend/assistant/main.mo",
+      "type": "motoko"
+    },
     "assets": {
       "dependencies": [
         "playground"
