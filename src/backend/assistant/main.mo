@@ -38,10 +38,15 @@ actor Assistant {
     todos := add(todos, description, nextId);
     nextId += 1;
   };
+  
+  public func clear() : async [ToDo]{
+     var updated : [ToDo] = [];
+     todos := updated;
+     todos
+  };
 
-  public query func showTodos () : async Text {
-    show(todos)
-    // todos
+  public query func showTodos () : async [ToDo] {
+    todos
   };
 
 };
