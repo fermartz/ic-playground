@@ -1,0 +1,16 @@
+type Phone = text;
+type Name = text;
+service : {
+  add: (int) -> (int);
+  clearall: () -> (int);
+  div: (int) -> (opt int);
+  getCalculatorResult: () -> (int) query;
+  getValue: () -> (nat) query;
+  greet: (text) -> (text);
+  hello: () -> (text) query;
+  increment: () -> ();
+  insert: (Name, Phone) -> ();
+  lookup: (Name) -> (opt Phone) query;
+  mul: (int) -> (int);
+  sub: (int) -> (int);
+}
