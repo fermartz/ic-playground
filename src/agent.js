@@ -7,15 +7,18 @@ import {
   idlFactory as assistant_idl,
   canisterId as assistant_id,
 } from "dfx-generated/assistant";
-// const ENV = import.meta.env.MODE;
-// console.log(
-//   "pro",
-//   import.meta.env.MODE,
-//   window.location,
-//   `${window.location.protocol}${window.location.host}`
-// );
+const ENV = import.meta.env.MODE;
+console.log(
+  "pro",
+  import.meta.env.MODE,
+  window.location,
+  `${window.location.protocol}${window.location.host}`
+);
 const agentOptions = {
-  host: undefined,
+  host:
+    ENV === "production"
+      ? `${window.location.protocol}${window.location.host}:8000`
+      : "http://localhost:8000",
 };
 
 const agent = new HttpAgent(agentOptions);
