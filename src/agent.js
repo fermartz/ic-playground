@@ -8,6 +8,12 @@ import {
   canisterId as assistant_id,
 } from "dfx-generated/assistant";
 
+console.log(
+  "pro",
+  import.meta.env.MODE,
+  window.location,
+  `${window.location.protocol}${window.location.host}`
+);
 const agentOptions = {
   host: "http://localhost:8000",
 };
