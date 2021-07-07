@@ -7,13 +7,11 @@ import {
   idlFactory as assistant_idl,
   canisterId as assistant_id,
 } from "dfx-generated/assistant";
+
+// Get environment from Vite env object
 const ENV = import.meta.env.MODE;
-console.log(
-  "pro",
-  import.meta.env.MODE,
-  window.location,
-  `${window.location.protocol}${window.location.host}`
-);
+
+// If is prod get the window location at port 8000 otherwise is local
 const agentOptions = {
   host:
     ENV === "production"
