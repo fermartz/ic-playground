@@ -6,11 +6,13 @@ Modern playground for the Internet Computer powered by [Create IC APP](https://g
 
 ## Requirements
 
-Install the beta version of the DFINITY Canister SDK
+- Install the following version of the DFINITY Canister SDK
 
 ```
-DFX_VERSION=0.7.0-beta.8 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+DFX_VERSION=0.7.0 sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 ```
+
+- NodeJS >=16.0.0
 
 ## Get Started
 
