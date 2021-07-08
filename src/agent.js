@@ -15,7 +15,7 @@ const ENV = import.meta.env.MODE;
 const agentOptions = {
   host:
     ENV === "production"
-      ? `${window.location.protocol}${window.location.host}:8000`
+      ? `${window.location.protocol}${window.location.host}`
       : "http://localhost:8000",
 };
 
