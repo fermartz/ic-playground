@@ -25,10 +25,6 @@ export default ({ IDL }) => {
     'SetAssetContent' : SetAssetContentArguments,
     'Clear' : ClearArguments,
   });
-  const CommitBatchArguments = IDL.Record({
-    'batch_id' : BatchId,
-    'operations' : IDL.Vec(BatchOperationKind),
-  });
   const HeaderField = IDL.Tuple(IDL.Text, IDL.Text);
   const HttpRequest = IDL.Record({
     'url' : IDL.Text,
@@ -37,7 +33,7 @@ export default ({ IDL }) => {
     'headers' : IDL.Vec(HeaderField),
   });
   const StreamingCallbackToken = IDL.Record({
-    'key' : IDL.Text,
+    'key' : Key,
     'sha256' : IDL.Opt(IDL.Vec(IDL.Nat8)),
     'index' : IDL.Nat,
     'content_encoding' : IDL.Text,
@@ -51,7 +47,7 @@ export default ({ IDL }) => {
       'token' : StreamingCallbackToken,
       'callback' : IDL.Func(
           [StreamingCallbackToken],
-          [StreamingCallbackHttpResponse],
+          [IDL.Opt(StreamingCallbackHttpResponse)],
           ['query'],
         ),
     }),
@@ -63,23 +59,19 @@ export default ({ IDL }) => {
     'status_code' : IDL.Nat16,
   });
   const Time = IDL.Int;
-  const AssetEncodingDetails = IDL.Record({
-    'modified' : Time,
-    'sha256' : IDL.Opt(IDL.Vec(IDL.Nat8)),
-    'length' : IDL.Nat,
-    'content_encoding' : IDL.Text,
-  });
-  const AssetDetails = IDL.Record({
-    'key' : Key,
-    'encodings' : IDL.Vec(AssetEncodingDetails),
-    'content_type' : IDL.Text,
-  });
-  const Path = IDL.Text;
-  const Contents = IDL.Vec(IDL.Nat8);
-  const anon_class_25_1 = IDL.Service({
+  return IDL.Service({
     'authorize' : IDL.Func([IDL.Principal], [], []),
     'clear' : IDL.Func([ClearArguments], [], []),
-    'commit_batch' : IDL.Func([CommitBatchArguments], [], []),
+    'commit_batch' : IDL.Func(
+        [
+          IDL.Record({
+            'batch_id' : BatchId,
+            'operations' : IDL.Vec(BatchOperationKind),
+          }),
+        ],
+        [],
+        [],
+      ),
     'create_asset' : IDL.Func([CreateAssetArguments], [], []),
     'create_batch' : IDL.Func(
         [IDL.Record({})],
@@ -120,11 +112,29 @@ export default ({ IDL }) => {
     'http_request' : IDL.Func([HttpRequest], [HttpResponse], ['query']),
     'http_request_streaming_callback' : IDL.Func(
         [StreamingCallbackToken],
-        [StreamingCallbackHttpResponse],
+        [IDL.Opt(StreamingCallbackHttpResponse)],
         ['query'],
       ),
-    'list' : IDL.Func([IDL.Record({})], [IDL.Vec(AssetDetails)], ['query']),
-    'retrieve' : IDL.Func([Path], [Contents], ['query']),
+    'list' : IDL.Func(
+        [IDL.Record({})],
+        [
+          IDL.Vec(
+            IDL.Record({
+              'key' : Key,
+              'encodings' : IDL.Vec(
+                IDL.Record({
+                  'modified' : Time,
+                  'sha256' : IDL.Opt(IDL.Vec(IDL.Nat8)),
+                  'length' : IDL.Nat,
+                  'content_encoding' : IDL.Text,
+                })
+              ),
+              'content_type' : IDL.Text,
+            })
+          ),
+        ],
+        ['query'],
+      ),
     'set_asset_content' : IDL.Func([SetAssetContentArguments], [], []),
     'store' : IDL.Func(
         [
@@ -141,6 +151,5 @@ export default ({ IDL }) => {
       ),
     'unset_asset_content' : IDL.Func([UnsetAssetContentArguments], [], []),
   });
-  return anon_class_25_1;
 };
 export const init = ({ IDL }) => { return []; };

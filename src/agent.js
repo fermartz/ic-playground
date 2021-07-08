@@ -11,13 +11,16 @@ import {
 // Get environment from Vite env object
 const ENV = import.meta.env.MODE;
 
-// If is prod get the window location at port 8000 otherwise is local
+// //If is prod get the window location at port 8000 otherwise is local
 const agentOptions = {
   host:
     ENV === "production"
       ? `${window.location.protocol}${window.location.host}`
       : "http://localhost:8000",
 };
+// const agentOptions = {
+//   host: "http://localhost:8000",
+// };
 
 const agent = new HttpAgent(agentOptions);
 const playground = Actor.createActor(playground_idl, {

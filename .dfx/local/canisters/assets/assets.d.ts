@@ -1,15 +1,4 @@
 import type { Principal } from '@dfinity/agent';
-export interface AssetDetails {
-  'key' : Key,
-  'encodings' : Array<AssetEncodingDetails>,
-  'content_type' : string,
-};
-export interface AssetEncodingDetails {
-  'modified' : Time,
-  'sha256' : [] | [Array<number>],
-  'length' : bigint,
-  'content_encoding' : string,
-};
 export type BatchId = bigint;
 export type BatchOperationKind = { 'CreateAsset' : CreateAssetArguments } |
   { 'UnsetAssetContent' : UnsetAssetContentArguments } |
@@ -18,11 +7,6 @@ export type BatchOperationKind = { 'CreateAsset' : CreateAssetArguments } |
   { 'Clear' : ClearArguments };
 export type ChunkId = bigint;
 export interface ClearArguments {};
-export interface CommitBatchArguments {
-  'batch_id' : BatchId,
-  'operations' : Array<BatchOperationKind>,
-};
-export type Contents = Array<number>;
 export interface CreateAssetArguments { 'key' : Key, 'content_type' : string };
 export interface DeleteAssetArguments { 'key' : Key };
 export interface HeaderField [string, string];
@@ -39,7 +23,6 @@ export interface HttpResponse {
   'status_code' : number,
 };
 export type Key = string;
-export type Path = string;
 export interface SetAssetContentArguments {
   'key' : Key,
   'sha256' : [] | [Array<number>],
@@ -51,7 +34,7 @@ export interface StreamingCallbackHttpResponse {
   'body' : Array<number>,
 };
 export interface StreamingCallbackToken {
-  'key' : string,
+  'key' : Key,
   'sha256' : [] | [Array<number>],
   'index' : bigint,
   'content_encoding' : string,
@@ -67,10 +50,12 @@ export interface UnsetAssetContentArguments {
   'key' : Key,
   'content_encoding' : string,
 };
-export interface anon_class_25_1 {
+export default interface _SERVICE {
   'authorize' : (arg_0: Principal) => Promise<undefined>,
   'clear' : (arg_0: ClearArguments) => Promise<undefined>,
-  'commit_batch' : (arg_0: CommitBatchArguments) => Promise<undefined>,
+  'commit_batch' : (
+      arg_0: { 'batch_id' : BatchId, 'operations' : Array<BatchOperationKind> },
+    ) => Promise<undefined>,
   'create_asset' : (arg_0: CreateAssetArguments) => Promise<undefined>,
   'create_batch' : (arg_0: {}) => Promise<{ 'batch_id' : BatchId }>,
   'create_chunk' : (
@@ -99,9 +84,23 @@ export interface anon_class_25_1 {
   'http_request' : (arg_0: HttpRequest) => Promise<HttpResponse>,
   'http_request_streaming_callback' : (
       arg_0: StreamingCallbackToken,
-    ) => Promise<StreamingCallbackHttpResponse>,
-  'list' : (arg_0: {}) => Promise<Array<AssetDetails>>,
-  'retrieve' : (arg_0: Path) => Promise<Contents>,
+    ) => Promise<[] | [StreamingCallbackHttpResponse]>,
+  'list' : (arg_0: {}) => Promise<
+      Array<
+        {
+          'key' : Key,
+          'encodings' : Array<
+            {
+              'modified' : Time,
+              'sha256' : [] | [Array<number>],
+              'length' : bigint,
+              'content_encoding' : string,
+            }
+          >,
+          'content_type' : string,
+        }
+      >
+    >,
   'set_asset_content' : (arg_0: SetAssetContentArguments) => Promise<undefined>,
   'store' : (
       arg_0: {
@@ -116,4 +115,3 @@ export interface anon_class_25_1 {
       undefined
     >,
 };
-export default anon_class_25_1;
