@@ -17,6 +17,7 @@ export const PATH_APP = {
 
   app: {
     assistant: path(ROOTS.app, "/assistant"),
+    blog: path(ROOTS.app, "/blog"),
     calculator: path(ROOTS.app, "/calculator"),
     counter: path(ROOTS.app, "/counter"),
     greeting: path(ROOTS.app, "/greeting"),
