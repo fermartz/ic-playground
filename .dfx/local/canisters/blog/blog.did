@@ -1,0 +1,15 @@
+type Id = nat32;
+type Entry = 
+ record {
+   author: text;
+   content: text;
+ };
+service : {
+  insert: (Entry) -> ();
+  lookup: (nat32) -> (opt Entry) query;
+  showEntries: () -> (vec record {
+                            Id;
+                            Entry;
+                          }) query;
+  showSize: () -> (nat) query;
+}

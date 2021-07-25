@@ -7,6 +7,10 @@ import {
   idlFactory as assistant_idl,
   canisterId as assistant_id,
 } from "dfx-generated/assistant";
+import {
+  idlFactory as blog_idl,
+  canisterId as blog_id,
+} from "dfx-generated/blog";
 
 // Get environment from Vite env object
 const ENV = import.meta.env.MODE;
@@ -31,4 +35,8 @@ const assistant = Actor.createActor(assistant_idl, {
   agent,
   canisterId: assistant_id,
 });
-export { playground, assistant };
+const blog = Actor.createActor(blog_idl, {
+  agent,
+  canisterId: blog_id,
+});
+export { playground, assistant, blog };
