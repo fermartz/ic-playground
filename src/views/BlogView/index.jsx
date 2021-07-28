@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { NavLink as RouterLink } from "react-router-dom";
 import { blog } from "../../agent.js";
 
 function BlogView() {
@@ -20,7 +21,9 @@ function BlogView() {
       {list.length > 0 &&
         list.map((i) => {
           return (
-            <p className="text-2xl text-indigo-600 my-3">{i[1].content}</p>
+            <RouterLink to={`/app/blog/post/${i[0]}`} key={i[0]}>
+              <p className="text-2xl text-indigo-600 my-3">{i[1].content}</p>
+            </RouterLink>
           );
         })}
     </div>
