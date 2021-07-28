@@ -17,15 +17,7 @@ function BlogView() {
   }, []);
   return (
     <div>
-      <p className="text-2xl text-indigo-600 my-3">Hello from blog view</p>
-      {list.length > 0 &&
-        list.map((i) => {
-          return (
-            <RouterLink to={`/app/blog/post/${i[0]}`} key={i[0]}>
-              <p className="text-2xl text-indigo-600 my-3">{i[1].content}</p>
-            </RouterLink>
-          );
-        })}
+      <p className="text-5xl text-indigo-600 ">Blog</p>
       <RouterLink to={`/app/blog/add`}>
         <button
           className="px-8 py-2 my-4 rounded-full text-lg focus:outline-none font-medium text-white bg-gradient-to-r from-indigo-600 to-pink-500"
@@ -34,6 +26,17 @@ function BlogView() {
           Add a blog post
         </button>
       </RouterLink>
+      <div class="grid grid-cols-3 gap-4">
+        {list.length > 0 &&
+          list.map((i) => {
+            return (
+              <RouterLink to={`/app/blog/post/${i[0]}`} key={i[0]}>
+                <p className="text-2xl text-indigo-600 my-3">{i[1].content}</p>
+                <p className="text-2xl text-indigo-600 my-3">{i[1].author}</p>
+              </RouterLink>
+            );
+          })}
+      </div>
     </div>
   );
 }
