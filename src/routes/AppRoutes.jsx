@@ -18,6 +18,11 @@ const AppRoutes = {
     },
     {
       exact: true,
+      path: PATH_APP.app.addBlogPost,
+      component: lazy(() => import("../views/BlogView/add")),
+    },
+    {
+      exact: true,
       path: PATH_APP.app.blog,
       component: lazy(() => import("../views/BlogView")),
     },

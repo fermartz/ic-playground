@@ -5,16 +5,17 @@ import { blog } from "../../agent.js";
 function PostView({ match }) {
   console.log(typeof parseInt(match.params.id));
   const [data, setData] = useState([]);
-  const [content, setContent] = useState("");
+
   const refreshData = useCallback(async () => {
     const result = await blog.lookup(parseInt(match.params.id));
     setData(result);
-    setContent(result[1].content);
+    // setContent(result[1].content);
     console.log(result);
   });
   useEffect(() => {
     refreshData();
   }, []);
+  // console.log(data.length, data, data[0]);
   return (
     <div>
       <RouterLink to={`/app/blog`}>
@@ -26,8 +27,14 @@ function PostView({ match }) {
         </button>
       </RouterLink>
       <div>
-        <p className="text-2xl text-indigo-600 my-3">{content}</p>
-        <p className="text-2xl text-indigo-600 my-3">{i[1].author}</p>
+        {data.length > 0 && (
+          <div>
+            <p className="text-2xl text-indigo-600 my-3">{data[0].content}</p>
+            <p className="text-2xl text-indigo-600 my-3">{data[0].author}</p>
+          </div>
+        )}
+        {/* <p className="text-2xl text-indigo-600 my-3">{content}</p> */}
+        {/* <p className="text-2xl text-indigo-600 my-3">{[1].author}</p> */}
       </div>
     </div>
   );
